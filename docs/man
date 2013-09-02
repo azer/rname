@@ -1,0 +1,8 @@
+    USAGE
+
+        rename [name]
+
+    OPTIONS
+
+        -v     --version    Show version and exit
+        -h     --help       Show help and exit

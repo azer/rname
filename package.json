@@ -1,0 +1,23 @@
+{
+  "name": "rname",
+  "version": "0.0.0",
+  "description": "Rename a NodeJS project",
+  "main": "index.js",
+  "bin": {
+    "rname": "./bin/rname"
+  },
+  "dependencies": {
+    "styled": "0.0.1",
+    "optimist": "0.x",
+    "show-help": "0.x",
+    "show-version": "0.x",
+    "local-debug": "0.0.0",
+    "default-debug": "0.0.0"
+  },
+  "repository": {
+    "url": "git@github.com:azer/rname.git",
+    "type": "git"
+  },
+  "author": "Azer Koculu <azer@kodfabrik.com>",
+  "license": "BSD"
+}

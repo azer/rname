@@ -1,0 +1,24 @@
+#!/usr/bin/env node
+
+require('default-debug')('*');
+
+var opt = require('optimist');
+var rename = require("../");
+
+var argv = opt
+      .options('version', { alias: 'v' })
+      .options('help', { alias: 'h' })
+      .argv;
+
+var name = argv._[0];
+
+if(argv.version) require('show-version');
+if(argv.help || argv._.length == 0 || !name) require('show-help');
+
+rename.manifest(name, function (old, rpl) {
+  if (!old) return console.error(style.red('Failed to read package.json'));
+
+  rename.git(old, name, function (old, rpl) {
+    if (!old) return console.error(style.red('Failed to change Git remote'));
+  });
+});
