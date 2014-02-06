@@ -2,23 +2,15 @@
 
 require('default-debug')('*');
 
-var opt = require('optimist');
+var command = require('new-command')();
+var style = require("styled");
 var rename = require("../");
-
-var argv = opt
-      .options('version', { alias: 'v' })
-      .options('help', { alias: 'h' })
-      .argv;
-
-var name = argv._[0];
-
-if(argv.version) require('show-version');
-if(argv.help || argv._.length == 0 || !name) require('show-help');
+var name = command._[0];
 
 rename.manifest(name, function (old, rpl) {
-  if (!old) return console.error(style.red('Failed to read package.json'));
+  if (!old) return console.error(style.red('  Failed to read package.json'));
 
   rename.git(old, name, function (old, rpl) {
-    if (!old) return console.error(style.red('Failed to change Git remote'));
+    if (!old) return console.error(style.red('  Failed to change Git remote'));
   });
 });
